@@ -34,6 +34,13 @@
     background-color: #f0f0f0;
 }
 
+<<<<<<< HEAD
+=======
+/* Remove the default tooltip */
+.ai-btn[title] {
+    /* Removed pointer-events: none to prevent disabling the button */
+}
+>>>>>>> cff9281606e91c60ff5c152cba7a5ebfef604e32
 
 /* Custom Tooltip styling */
 .ai-btn-wrapper:hover::after {
