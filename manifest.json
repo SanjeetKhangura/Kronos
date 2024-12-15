@@ -1,0 +1,16 @@
+{
+    "name": "Kronos",
+    "version": "0.1.0",
+    "description": "AI Responses for Emails",
+    "permissions": ["storage","tabs"],
+    "host_permissions": ["https://*.google.com/*"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [{
+        "matches": ["https://*.google.com/*"],
+        "js": ["contentScript.js"]
+    }],
+
+    "manifest_version": 3
+}
