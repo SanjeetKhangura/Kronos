@@ -1,0 +1,61 @@
+/* Ensure the wrapper has proper positioning */
+.ai-btn-wrapper {
+    display: inline-block;
+    margin-left: 8px;
+    position: relative; /* Ensure it is correctly positioned */
+    z-index: 10; /* Ensure the wrapper is above other elements */
+    border: 1px solid red; /* Debugging: Add border to check visibility */
+}
+
+/* Style for the AI button itself */
+.ai-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 20px; /* Make sure the icon is large enough */
+    transition: background-color 0.3s ease;
+    z-index: 20; /* Ensure the button is above other content */
+    border: 1px solid blue; /* Debugging: Add border to check visibility */
+}
+
+/* Material Icon styling */
+.ai-btn .material-icons {
+    font-size: 24px; /* Adjust the size of the icon */
+    font-family: 'Material Icons', sans-serif; /* Ensure the icon is loaded correctly */
+}
+
+/* Hover effect for the button */
+.ai-btn:hover {
+    background-color: #f0f0f0;
+}
+
+
+/* Custom Tooltip styling */
+.ai-btn-wrapper:hover::after {
+    content: "Let the Bot help you out!";
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 1000; /* Make sure it's on top */
+}
+
+/* Debugging: Add borders to ensure the button and wrapper are visible */
+.ai-btn-wrapper {
+    border: 1px solid red; /* Add border to check visibility */
+}
+
+.ai-btn {
+    border: 1px solid blue; /* Add border to check visibility */
+}
