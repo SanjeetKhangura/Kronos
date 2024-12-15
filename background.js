@@ -1,13 +1,28 @@
+chrome.runtime.onInstalled.addListener(() => {
+    console.log("Service Worker Installed/Activated");
+});
+
 chrome.tabs.onUpdated.addListener((tabId, tab) => {
-    if (tab.url && tab.url.includes("mail.google.com/mail/u/0/#inbox")) {
+    
+    if (tab.url && tab.url.includes("mail.google.com")) {
 
-        const queryParameters = tab.url.split("#inbox/")
-        const urlParameters = new URLSearchParams(queryParameters);
+        console.log("Matched Gmail URL:", tab.url);
 
-        chrome.tabs,sendMessage(tabId, {
-            type: "NEW",
-            mailId: queryParameters 
-        })
+        const queryParameters = tab.url.split("#inbox/")[1];
 
+        if (queryParameters) {
+
+            const urlParameters = new URLSearchParams(queryParameters);
+
+            console.log("URL KEY", queryParameters);
+            console.log("URL PARAM", urlParameters);
+
+            chrome.tabs.sendMessage(tabId, {
+                type: "NEW",
+                mailId: queryParameters, 
+                urlParam: urlParameters
+            });
+
+        }
     }
 })
