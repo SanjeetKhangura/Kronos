@@ -47,7 +47,7 @@
 
             // Add event listener to the AI button (for click functionality)
             aiBtn.addEventListener("click", () => {
-                console.log("AI button clicked!");
+                console.log("You just Clicked the Bot");
             });
         }
     }
