@@ -1,12 +1,12 @@
-/* Ensure the wrapper has proper positioning */
+/* Wrapper for the AI button */
 .ai-btn-wrapper {
     display: inline-block;
     margin-left: 8px;
-    position: relative; /* Ensure it is correctly positioned */
-    z-index: 10; /* Ensure the wrapper is above other elements */
+    position: relative; /* Ensures popup is positioned relative to this wrapper */
+    z-index: 10; /* Keeps the wrapper above other elements */
 }
 
-/* Style for the AI button itself */
+/* Styling for the AI button */
 .ai-btn {
     display: flex;
     align-items: center;
@@ -16,24 +16,24 @@
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 4px;
-    font-size: 20px; /* Make sure the icon is large enough */
+    font-size: 20px;
     transition: background-color 0.3s ease;
-    z-index: 20; /* Ensure the button is above other content */
+    z-index: 20; /* Ensures the button appears above other content */
     border: 2px solid black;
 }
 
-/* Material Icon styling */
+/* Material Icon styling for the AI button */
 .ai-btn .material-icons {
-    font-size: 24px; /* Adjust the size of the icon */
-    font-family: 'Material Icons', sans-serif; /* Ensure the icon is loaded correctly */
+    font-size: 24px; /* Adjust size of the icon */
+    font-family: 'Material Icons', sans-serif; /* Ensures icon font loads correctly */
 }
 
-/* Hover effect for the button */
+/* Hover effect for the AI button */
 .ai-btn:hover {
     background-color: #f0f0f0;
 }
 
-/* Custom Tooltip styling */
+/* Tooltip styling for the AI button */
 .ai-btn-wrapper:hover::after {
     content: "Let the Bot help you out!";
     position: absolute;
@@ -46,5 +46,53 @@
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
-    z-index: 1000; /* Make sure it's on top */
+    z-index: 1000; /* Ensures tooltip appears above everything */
+}
+
+/* Popup container styling */
+.ai-popup {
+    position: absolute; /* Positioned relative to the button wrapper */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 100; /* Ensure popup appears above content */
+    width: max-content; /* Adjust width dynamically based on content */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Add space between the buttons */
+}
+
+/* Popup buttons styling */
+.popup-btn {
+    background-color: #007BFF; /* Blue background */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Popup button hover effect */
+.popup-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Animations for the popup */
+.ai-popup {
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

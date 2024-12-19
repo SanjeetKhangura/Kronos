@@ -1,7 +1,6 @@
 (() => {
     let currentMail = "";
 
-    // Listen for messages from the background script
     chrome.runtime.onMessage.addListener((obj, sender, response) => {
         const { type, mailId, urlParam } = obj;
 
@@ -12,62 +11,105 @@
     });
 
     const newMailLoaded = () => {
-        
-        // Dynamically load the Google Material Icons stylesheet
+
         const materialIconsLink = document.createElement("link");
         materialIconsLink.href = "https://fonts.googleapis.com/icon?family=Material+Icons";
         materialIconsLink.rel = "stylesheet";
         document.head.appendChild(materialIconsLink);
 
-        // Use a MutationObserver to wait for the action button container to appear
-        const observer = new MutationObserver(() => {
+        const observerForBtn = new MutationObserver(() => {
             const actionButtonContainer = document.querySelector(".amn");
 
             if (actionButtonContainer) {
                 console.log("Action Button Container Found:", actionButtonContainer);
-                addAIButton(actionButtonContainer); // Add the AI button
-                observer.disconnect(); // Stop observing once the button is added
+                addAIButton(actionButtonContainer);
+                observerForBtn.disconnect();
             }
         });
 
-        // Start observing changes in the DOM (child elements added/removed)
-        observer.observe(document.body, { childList: true, subtree: true });
+        observerForBtn.observe(document.body, { childList: true, subtree: true });
     };
 
     const addAIButton = (actionButtonContainer) => {
         const aiBtnExists = document.getElementsByClassName("ai-btn")[0];
 
         if (!aiBtnExists) {
-            // Create a wrapper div for the button
             const aiBtnWrapper = document.createElement("div");
-            aiBtnWrapper.classList.add("ai-btn-wrapper"); // Class defined in CSS
+            aiBtnWrapper.classList.add("ai-btn-wrapper");
 
-            // Create the button
             const aiBtn = document.createElement("button");
-            aiBtn.classList.add("ai-btn"); // Class defined in CSS
-            aiBtn.setAttribute("title", "Let the Bot help you out!"); // Tooltip text
+            aiBtn.classList.add("ai-btn");
+            aiBtn.setAttribute("title", "Let the Bot help you out!");
 
-            // Use a Material Icon (e.g., "help_outline")
             const aiIcon = document.createElement("span");
             aiIcon.classList.add("material-icons");
-            aiIcon.textContent = "support"; // Icon name from Material Icons
+            aiIcon.textContent = "support"; // Icon name
 
-            // Append the icon to the button (not the wrapper)
             aiBtn.appendChild(aiIcon);
-
-            // Append the wrapper with the button into the Gmail action button container
-            actionButtonContainer.appendChild(aiBtnWrapper);
             aiBtnWrapper.appendChild(aiBtn);
+            actionButtonContainer.appendChild(aiBtnWrapper);
 
-            // Add click functionality to the button
             aiBtn.addEventListener("click", () => {
-                console.log("You just Clicked the Bot");
+                createPopup(aiBtn); // Trigger popup creation
             });
-
-            console.log("AI Button Added Successfully!");
-        } else {
-            console.log("AI Button Already Exists!");
         }
     };
+
+    const createPopup = (button) => {
+        console.log("createPopup function called");
+    
+        // Ensure any existing popup is removed before creating a new one
+        const existingPopup = document.querySelector(".ai-popup");
+        if (existingPopup) {
+            existingPopup.remove();
+        }
+    
+        // Create popup wrapper
+        const popupWrapper = document.createElement("div");
+        popupWrapper.classList.add("ai-popup");
+        console.log("Popup wrapper created.");
+    
+        // Create the "Summarize" button
+        const summarizeBtn = document.createElement("button");
+        summarizeBtn.textContent = "Summarize";
+        summarizeBtn.classList.add("popup-btn");
+        summarizeBtn.addEventListener("click", () => {
+            console.log("Summarize button clicked.");
+            // Add the summarize action here
+        });
+    
+        // Create the "Formal Reply" button
+        const replyBtn = document.createElement("button");
+        replyBtn.textContent = "Formal Reply";
+        replyBtn.classList.add("popup-btn");
+        replyBtn.addEventListener("click", () => {
+            console.log("Formal Reply button clicked.");
+            // Add the formal reply action here
+        });
+    
+        // Add buttons to the popup
+        popupWrapper.appendChild(summarizeBtn);
+        popupWrapper.appendChild(replyBtn);
+    
+        // Attach the popup to the button wrapper (parent)
+        const buttonWrapper = button.parentElement;
+        if (!buttonWrapper) {
+            console.error("Failed to attach popup: button has no parent element.");
+            return;
+        }
+    
+        // Ensure the button's parent wrapper is relatively positioned
+        buttonWrapper.style.position = "relative";
+    
+        // Position the popup dynamically
+        popupWrapper.style.position = "absolute"; // Position relative to the wrapper
+        popupWrapper.style.top = `${button.offsetTop + button.offsetHeight}px`; // Below the button
+        popupWrapper.style.left = `0px`; // Aligned to the left of the wrapper
+    
+        // Append the popup to the wrapper
+        buttonWrapper.appendChild(popupWrapper);
+    
+        console.log("Popup successfully attached to the button wrapper.");
+    };    
     newMailLoaded();
 })();
