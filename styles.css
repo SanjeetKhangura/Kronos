@@ -25,7 +25,7 @@
 /* Material Icon styling for the AI button */
 .ai-btn .material-icons {
     font-size: 24px; /* Adjust size of the icon */
-    font-family: 'Material Icons', sans-serif; /* Ensure icon font loads correctly */
+    font-family: 'Material Icons', sans-serif; /* Ensures icon font loads correctly */
 }
 
 /* Hover effect for the AI button */
@@ -46,7 +46,7 @@
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
-    z-index: 1000; /* Ensure tooltip appears above everything */
+    z-index: 1000; /* Ensures tooltip appears above everything */
 }
 
 /* Popup container styling */
@@ -57,7 +57,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    z-index: 100; /* Ensure popup appears above content */
+    z-index: 100; /* Ensures popup appears above content */
     width: max-content; /* Adjust width dynamically based on content */
     display: flex;
     flex-direction: column;
@@ -66,8 +66,8 @@
 
 /* Popup buttons styling */
 .popup-btn {
-    background-color: #007BFF; /* Blue background */
-    color: #fff; /* White text */
+    background-color: #007BFF;
+    color: #fff;
     border: none;
     border-radius: 4px;
     padding: 8px 12px;
@@ -78,10 +78,10 @@
 
 /* Popup button hover effect */
 .popup-btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
-/* Optional: Animations for the popup */
+/*Animations for the popup */
 .ai-popup {
     animation: fadeIn 0.2s ease-in-out;
 }

@@ -77,7 +77,6 @@
         summarizeBtn.classList.add("popup-btn");
         summarizeBtn.addEventListener("click", () => {
             console.log("Summarize button clicked.");
-            // Add the summarize action here
         });
     
         // Create the "Formal Reply" button
@@ -86,7 +85,15 @@
         replyBtn.classList.add("popup-btn");
         replyBtn.addEventListener("click", () => {
             console.log("Formal Reply button clicked.");
-            // Add the formal reply action here
+        });
+
+        // Create the "Close(X)" button
+        const closeBtn = document.createElement("button");
+        closeBtn.textContent = "X";
+        closeBtn.classList.add("popup-btn");
+        closeBtn.addEventListener("click", () => {
+            console.log("Close(X) button clicked.");
+            existingPopup.remove();
         });
     
         // Add buttons to the popup
@@ -108,7 +115,7 @@
         popupWrapper.style.top = `${button.offsetTop + button.offsetHeight}px`; // Below the button
         popupWrapper.style.left = `0px`; // Aligned to the left of the wrapper
     
-        // Append the popup to the wrapper (not the document body)
+        // Append the popup to the wrapper
         buttonWrapper.appendChild(popupWrapper);
     
         console.log("Popup successfully attached to the button wrapper.");
