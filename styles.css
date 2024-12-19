@@ -1,15 +1,11 @@
 /* Wrapper for the AI button */
-/* Wrapper for the AI button */
 .ai-btn-wrapper {
     display: inline-block;
     margin-left: 8px;
     position: relative; /* Ensures popup is positioned relative to this wrapper */
     z-index: 10; /* Keeps the wrapper above other elements */
-    position: relative; /* Ensures popup is positioned relative to this wrapper */
-    z-index: 10; /* Keeps the wrapper above other elements */
 }
 
-/* Styling for the AI button */
 /* Styling for the AI button */
 .ai-btn {
     display: flex;
@@ -21,27 +17,22 @@
     padding: 5px 10px;
     border-radius: 4px;
     font-size: 20px;
-    font-size: 20px;
     transition: background-color 0.3s ease;
-    z-index: 20; /* Ensures the button appears above other content */
     z-index: 20; /* Ensures the button appears above other content */
     border: 2px solid black;
 }
 
 /* Material Icon styling for the AI button */
-/* Material Icon styling for the AI button */
 .ai-btn .material-icons {
     font-size: 24px; /* Adjust size of the icon */
-    font-family: 'Material Icons', sans-serif; /* Ensures icon font loads correctly */
+    font-family: 'Material Icons', sans-serif; /* Ensure icon font loads correctly */
 }
 
-/* Hover effect for the AI button */
 /* Hover effect for the AI button */
 .ai-btn:hover {
     background-color: #f0f0f0;
 }
 
-/* Tooltip styling for the AI button */
 /* Tooltip styling for the AI button */
 .ai-btn-wrapper:hover::after {
     content: "Let the Bot help you out!";
@@ -55,7 +46,7 @@
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
-    z-index: 1000; /* Ensures tooltip appears above everything */
+    z-index: 1000; /* Ensure tooltip appears above everything */
 }
 
 /* Popup container styling */
@@ -70,7 +61,7 @@
     width: max-content; /* Adjust width dynamically based on content */
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Add space between the buttons */
+    gap: 10px; /* Adds space between the buttons */
 }
 
 /* Popup buttons styling */
@@ -87,10 +78,10 @@
 
 /* Popup button hover effect */
 .popup-btn:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
-/* Animations for the popup */
+/* Optional: Animations for the popup */
 .ai-popup {
     animation: fadeIn 0.2s ease-in-out;
 }
