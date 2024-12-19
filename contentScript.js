@@ -86,15 +86,6 @@
         replyBtn.addEventListener("click", () => {
             console.log("Formal Reply button clicked.");
         });
-
-        // Create the "Close(X)" button
-        const closeBtn = document.createElement("button");
-        closeBtn.textContent = "X";
-        closeBtn.classList.add("popup-btn");
-        closeBtn.addEventListener("click", () => {
-            console.log("Close(X) button clicked.");
-            existingPopup.remove();
-        });
     
         // Add buttons to the popup
         popupWrapper.appendChild(summarizeBtn);
