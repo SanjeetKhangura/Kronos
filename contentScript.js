@@ -12,11 +12,13 @@
 
     const newMailLoaded = () => {
 
+
         const materialIconsLink = document.createElement("link");
         materialIconsLink.href = "https://fonts.googleapis.com/icon?family=Material+Icons";
         materialIconsLink.rel = "stylesheet";
         document.head.appendChild(materialIconsLink);
 
+        const observerForBtn = new MutationObserver(() => {
         const observerForBtn = new MutationObserver(() => {
             const actionButtonContainer = document.querySelector(".amn");
 
@@ -24,9 +26,12 @@
                 console.log("Action Button Container Found:", actionButtonContainer);
                 addAIButton(actionButtonContainer);
                 observerForBtn.disconnect();
+                addAIButton(actionButtonContainer);
+                observerForBtn.disconnect();
             }
         });
 
+        observerForBtn.observe(document.body, { childList: true, subtree: true });
         observerForBtn.observe(document.body, { childList: true, subtree: true });
     };
 
@@ -36,16 +41,21 @@
         if (!aiBtnExists) {
             const aiBtnWrapper = document.createElement("div");
             aiBtnWrapper.classList.add("ai-btn-wrapper");
+            aiBtnWrapper.classList.add("ai-btn-wrapper");
 
             const aiBtn = document.createElement("button");
+            aiBtn.classList.add("ai-btn");
+            aiBtn.setAttribute("title", "Let the Bot help you out!");
             aiBtn.classList.add("ai-btn");
             aiBtn.setAttribute("title", "Let the Bot help you out!");
 
             const aiIcon = document.createElement("span");
             aiIcon.classList.add("material-icons");
             aiIcon.textContent = "support"; // Icon name
+            aiIcon.textContent = "support"; // Icon name
 
             aiBtn.appendChild(aiIcon);
+            aiBtnWrapper.appendChild(aiBtn);
             aiBtnWrapper.appendChild(aiBtn);
             actionButtonContainer.appendChild(aiBtnWrapper);
 
